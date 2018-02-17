@@ -5,6 +5,7 @@ import logger from "redux-logger";
 import App from "./containers/App.js";
 //引入模型
 import flowerShowModel from "./models/flowerShowModel.js";
+import flowerListModel from "./models/flowerListModel.js";
 
 //创建dva的app对象
 const app = dva({
@@ -16,6 +17,7 @@ const router = () => <App></App>;
 app.router(router);
 //注册模型
 app.model(flowerShowModel);
+app.model(flowerListModel);
 
 //挂载上树
 app.start("#app");

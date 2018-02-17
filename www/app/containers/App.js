@@ -4,7 +4,7 @@ import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
-import FlowerList from "../components/flowerList/FlowerList";
+import FlowerModules from "../components/flowerModules/FlowerModules";
 
 import "./App.less";
 
@@ -66,7 +66,7 @@ class App extends React.Component {
                                 <Breadcrumb.Item>App</Breadcrumb.Item>
                             </Breadcrumb>
                             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 ,width:1100}}>
-                                <FlowerList></FlowerList>
+                                <FlowerModules></FlowerModules>
                             </Content>
                         </Layout>
                     </Layout>

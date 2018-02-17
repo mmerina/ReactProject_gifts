@@ -9,7 +9,7 @@ var flowerCtrl = require("./controllers/flowerCtrl");
 app.get("/flowerimages/:orderID", flowerCtrl.showFlowerImages);
 app.get("/flowerinfo/:orderID", flowerCtrl.showFlowerInfo);
 app.get("/flowerlikes/:orderID", flowerCtrl.showFlowerLikes);
-// app.post("/flowersearch", flowerCtrl.showFlowerSearch);
+app.post("/flowersearch", flowerCtrl.showFlowerSearch);
 
 app.use(express.static("www"));
 

@@ -41,17 +41,17 @@ export default {
             yield put({ "type": "changeNowIdx", "nowidx": 0 });
             //改变nowalbum为view
             yield put({ "type": "changeNowAlbum", "nowalbum": "view" });
-            //发出请求，请求汽车信息
+            //发出请求，请求鲜花信息
             const flowerinfo = yield call(fetchFlowerInfo, nowid);
-            //改变carinfo
+            //改变flowerinfo
             yield put({ "type": "changeFlowerinfo", flowerinfo });
-            //发出请求，请求相似汽车
+            //发出请求，请求相似鲜花
             const flowerlikes = yield call(fetchFlowerLikes, nowid);
-            //改变carlikes
+            //改变flowerlikes
             yield put({ "type": "changeFlowerLikes", flowerlikes });
-            //发出请求，请求汽车的图集
+            //发出请求，请求鲜花的图集
             const flowerimages = yield call(fetchFlowerImages, nowid);
-            //改变carlikes
+            //改变flowerlikes
             yield put({ "type": "changeFlowerImages", flowerimages });
         },
         *changeNowAlbum(action, { put}){
