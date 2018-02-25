@@ -56,10 +56,10 @@ exports.showFlowerSearch = function (req, res) {
     form.parse(req, function (err, fields) {
         //得到前端发来的过滤信息，注意这是一个数组
         var nowfilters = fields.nowfilters;
-        // //得到前端发来的分页信息
-        // var pagination = fields.pagination;
-        // //得到前端发来的排序信息
-        // var sorter = fields.sorter;
+        //得到前端发来的分页信息
+        var pagination = fields.pagination;
+        //得到前端发来的排序信息
+        var sorter = fields.sorter;
         //查询体，查询体是一个对象，
         var CHAXUNTI = {};
         //现在要做的工作就是遍历数组将对象生成。
@@ -90,9 +90,9 @@ exports.showFlowerSearch = function (req, res) {
         Flower.count(CHAXUNTI, function (err, total) {
             Flower
                 .find(CHAXUNTI)		//过滤寻找
-                // .sort({ [sorter.sortby]: sorter.sortdirection == "ascend" ? 1 : -1 })	//排序方法 这里的排序是1表示从小到大，-1反之。
-                // .skip(pagination.pagesize * (pagination.page - 1))						//跳过多少条
-                // .limit(pagination.pagesize)												//限制多少条
+                .sort({ [sorter.sortby]: sorter.sortdirection == "ascend" ? 1 : -1 })	//排序方法 这里的排序是1表示从小到大，-1反之。
+                .skip(pagination.pagesize * (pagination.page - 1))						//跳过多少条
+                .limit(pagination.pagesize)												//限制多少条
                 .exec(function (err, docs) {												//执行
                     res.json({ total, "results": docs });
                 });

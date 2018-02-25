@@ -28,6 +28,8 @@ fs.readFile(jishujuURL, function (err, content) {
     //遍历数组，给每一个JSON文件添加一些随机属性
     //简单的说，就是丰富了基数据、拓展了基数据，没有改变基数据，只是拓展了。
     for (var i = 0; i < arr.length; i++) {
+        //增加收藏数
+        arr[i].collect = parseInt(Math.random() * 10000);
         //增加一个鲜花的形象照
         arr[i].avatar = fs.readdirSync(`${flowerimages_smallURL}/${arr[i].id}`)[0];
         //写入最终生成的文件

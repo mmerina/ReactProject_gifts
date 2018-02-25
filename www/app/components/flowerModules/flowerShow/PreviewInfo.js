@@ -90,7 +90,7 @@ class PreviewInfo extends Component {
                     <div className="choosePicker">配送时间：<TimePicker defaultValue={this.state.chooseDate} format={format} allowEmpty={false}/></div>
                 </div>
                 <div className="pricebox">
-                    <p className={cn({ "holiday_price": true, "cur": this.holiday.name != "节日" })}>{this.holiday.string}{this.holiday.name}配送：<span>￥{flowerinfo.price}</span></p>
+                    <p className={cn({ "holiday_price": true, "cur": this.holiday.name != "节日" })}>{this.holiday.string}{this.holiday.name}配送：<span>￥{Math.floor(flowerinfo.price * 1.7)}</span></p>
                     <p className={cn({ "normal_price": true, "cur": this.holiday.name == "节日" })}>平日配送：<span>￥{flowerinfo.price}</span></p>
                 </div>
                 <div className="buybox">
