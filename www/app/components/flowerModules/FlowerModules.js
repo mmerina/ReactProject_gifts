@@ -13,9 +13,10 @@ class FlowerModules extends Component {
         return ( 
         <div>
             {/*
+            
             <FlowerList></FlowerList>
-            <FlowerShow></FlowerShow>
-            */}
+        */}
+        <FlowerShow></FlowerShow>
         </div>
          )
     }

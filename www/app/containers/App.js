@@ -5,6 +5,8 @@ const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 import FlowerModules from "../components/flowerModules/FlowerModules";
+import UserModules from "../components/userModules/UserModules";
+import AdminModules from "../components/adminModules/AdminModules";
 
 import "./App.less";
 
@@ -66,7 +68,12 @@ class App extends React.Component {
                                 <Breadcrumb.Item>App</Breadcrumb.Item>
                             </Breadcrumb>
                             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 ,width:1100}}>
+                                {/*
                                 <FlowerModules></FlowerModules>
+                                <UserModules></UserModules>
+                                */}
+                                <AdminModules></AdminModules>
+                                
                             </Content>
                         </Layout>
                     </Layout>

@@ -11,16 +11,12 @@ class Grid extends React.Component {
         this.state = {
             "value": "A",
             "col": 4,
-            "row": 3   //网格形式
+            "row": 3   
         }
-
-
-        //直接派遣一个更改页面pagesize的动作
         props.dispatch({ "type": "flowerlist/changePage", pagesize: this.state.col * this.state.row })
     }
 
     render() {
-        //显示小格内容
         const showGridContent = (n) => {
             const theflower = this.props.flowers[n];
             if (!theflower) return null;
@@ -40,7 +36,6 @@ class Grid extends React.Component {
             </div>
         }
 
-        //放二维数组
         var ARR = [];
         for (var i = 0; i < this.state.row; i++) {
             var temp = [];
@@ -65,7 +60,6 @@ class Grid extends React.Component {
                         value: e.target.value
                     });
 
-                    //派遣一个action
                     this.props.dispatch({ "type": "flowerlist/changePage", pagesize: e.target.col * e.target.row })
                 }}>
                     <Radio.Button value="B" col="4" row="3">3 * 4</Radio.Button>

@@ -4,7 +4,6 @@ function* fetchServer(select, put) {
     var { sorter } = yield select((state) => state.flowerlist);
 
 
-    //发出Ajax请求
     var { results, total } = yield fetch(`/flowersearch`, {
         "method": 'POST',
         "headers": { 'Content-Type': 'application/json' },
@@ -14,9 +13,7 @@ function* fetchServer(select, put) {
             sorter
         })
     }).then(data => data.json());
-    //改变鲜花结果
     yield put({ "type": "changeFlowers", "flowers": results });
-    //改变pagination
     yield put({ "type": "changePagination", total });
 }
 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .default {
+            width: 160px;
+            height:160px;
+            border: 1px solid #eee;
+            padding: 10px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .default img {
+            width: 100%;
+        }
+
+        .pencil {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            width: 22px;
+            height: 22px;
+            background:url("../images/pencile.svg") no-repeat;
+            background-size: cover;
+            display: none;
+            cursor: pointer;
+        }
+
+        .default:hover .pencil {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/upload" method="post" enctype="multipart/form-data" id="form">
+        <input type="file" id="adminavatar" name="adminavatar" hidden/>
+        <input type="submit" hidden/>
+    </form>
+    <div class="default">
+        <span class="pencil" id="pencil"></span>
+
+        <img src="/adminicon" alt="">
+    </div>
+
+    <script type="text/javascript" src="/js-lib/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        $("#pencil").click(function () {
+            $("#adminavatar").trigger("click");
+        });
+
+        $("#adminavatar").bind("change", function () {
+            $("#form")[0].submit();
+            window.parent.cutIcon();
+        });
+    </script>
+</body>
+
+</html>

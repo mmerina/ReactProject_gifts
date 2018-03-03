@@ -4,7 +4,8 @@
     "description": "project_usedcars",
     "main": "app.js",
     "scripts": {
-        "mock": "node ./init/createMockFlowers.js"
+        "mock": "node ./init/createMockFlowers.js && node ./init/createMockUsers.js",
+        "mockadmin": "node ./init/createMockAdmins.js"
     },
     "author": "mxl",
     "license": "ISC",
@@ -14,7 +15,9 @@
         "dva": "^2.1.0",
         "express": "^4.16.2",
         "formidable": "^1.1.1",
+        "gm": "^1.23.1",
         "lodash": "^4.17.4",
+        "md5": "^2.2.1",
         "mongoose": "^4.13.9",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
