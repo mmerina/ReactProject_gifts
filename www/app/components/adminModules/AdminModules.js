@@ -13,9 +13,9 @@ class AdminModules extends Component {
         return (
             <div>
                 {/*
-    <AdminList></AdminList>
-*/}
-    <AddAdmin></AddAdmin>
+                    <AddAdmin></AddAdmin>
+                */}
+                <AdminList></AdminList>
             </div>
         )
     }

@@ -27,6 +27,7 @@ exports.showAdminSearch = function (req, res) {
 
         var CHAXUNTI = {
             "$or": [
+                { "id": keywordRegExp },
                 { "name": keywordRegExp },
                 { "mobile": keywordRegExp },
                 { "email": keywordRegExp },
@@ -97,17 +98,46 @@ exports.registerAdmin = function (req, res) {
         var theCenter = values.apartment[0];
         var theApartment = values.apartment[1];
         var theGroup = values.apartment[2];
+        var centerObj = apartment.filter((item)=>{return item.value==theCenter})[0];
+        var apartmentObj = centerObj.children.filter((item) => { return item.value == theApartment })[0];
+        var groupObj = apartmentObj.children.filter((item) => { return item.value == theGroup })[0];
 
-        var id = apartment[0].idx
+        if (values.id.length == 1){
+            var id = centerObj.idx + apartmentObj.idx + groupObj.idx + "00"+ values.id;
+        } else if (values.id.length == 2){
+            var id = centerObj.idx + apartmentObj.idx + groupObj.idx + "0"+ values.id;
+        }else{
+            var id = centerObj.idx + apartmentObj.idx + groupObj.idx + values.id;
+        }
 
         for (var key in values){
             if (key == "password"){
                 values[key] = md5(values[key]);
             } else if (key == "id"){
-
+                values[key] =id;
             }
         }
-        console.log(values);
+
+        Admin.find({ id }, function (err, docs) {
+            if(!docs[0]){
+                //写入数据库
+                Admin.create({
+                    "id": values.id,
+                    "name": values.name,
+                    "password": values.password,
+                    "mobile": values.mobile,
+                    "sex":values.sex,
+                    "email": values.email,
+                    "apartment": values.apartment,
+                    "icon": values.icon
+                }, function () {
+                    res.json({ "result": 1 })
+                })
+            }else{
+                res.json({ "result": -1 })
+            }
+        });
+
     });
 }
 

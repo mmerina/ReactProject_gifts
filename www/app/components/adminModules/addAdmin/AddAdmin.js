@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "dva";
 import { Row, Col} from 'antd';
 import MyForm from "./MyForm";
+import WrappedRegistrationForm from "./WrappedRegistrationForm";
 import CutBox from "./CutBox";
 
 import "./AddAdmin.less";
@@ -18,7 +19,17 @@ class AddAdmin extends Component {
             padding: 0,
             picurl: "",
             realW: 0,
-            realH: 0
+            realH: 0,
+            form: {
+                id: {},
+                password: {},
+                confirm: {},
+                sex: {},
+                apartment: {},
+                mobile: {},
+                email: {},
+                name: {}
+            }
         }
         var self = this;
 
@@ -87,6 +98,11 @@ class AddAdmin extends Component {
     register(value){
         console.log(value);
     }
+    handleFormChange(changedFields) {
+        this.setState({
+            form: { ...this.state.form, ...changedFields }
+        });
+    }
     
     render() {
         return (
@@ -99,7 +115,10 @@ class AddAdmin extends Component {
                         </div>
                     </Col>
                     <Col span={14}>
-                        <MyForm ></MyForm> 
+                        <WrappedRegistrationForm
+                            {...this.state.form}
+                            onChange={this.handleFormChange.bind(this)}
+                        ></WrappedRegistrationForm> 
                     </Col>
                 </Row>
                 {

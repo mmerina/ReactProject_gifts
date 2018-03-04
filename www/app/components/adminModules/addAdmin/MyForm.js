@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "dva";
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
+import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete, message} from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
 const AutoCompleteOption = AutoComplete.Option;
@@ -14,8 +14,12 @@ const apartment = [{
             label: '质量控制部',
             children: [
                 {
-                    value: '测试组',
-                    label: '测试组',
+                    value: '测试A组',
+                    label: '测试A组',
+                },
+                {
+                    value: '测试B组',
+                    label: '测试B组',
                 },
                 {
                     value: '信息技术组',
@@ -45,7 +49,7 @@ const apartment = [{
 }];
 
 
-class MyForm extends Component {
+export default class MyForm extends Component {
     constructor(props) {
         super(props);
         this.state={
@@ -54,7 +58,7 @@ class MyForm extends Component {
         }
     }
 
-    handleSubmit(e){
+    handleSubmit(e, resetFields){
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
@@ -63,7 +67,7 @@ class MyForm extends Component {
                         "id": values.id,
                         "name": values.name,
                         "apartment": values.apartment,
-                        "phone": values.phone,
+                        "mobile": values.mobile,
                         "email": values.email,
                         "password": values.password,
                         "sex": values.sex,
@@ -71,7 +75,11 @@ class MyForm extends Component {
                     })
                 }, function (data) {
                     if (data.result == 1) {
-                        console.log("注册成功！");
+                        message.success('注册成功！');
+                        resetFields();
+                        
+                    }else{
+                        message.error('id已存在！');
                     }
                 }); 
             }
@@ -99,7 +107,7 @@ class MyForm extends Component {
     }
 
     render() {
-        const { getFieldDecorator } = this.props.form;
+        const { getFieldDecorator, resetFields } = this.props.form;
         const { autoCompleteResult } = this.state;
 
         const formItemLayout = {
@@ -138,7 +146,7 @@ class MyForm extends Component {
         ));
         return (
             <div>
-                <Form onSubmit={this.handleSubmit.bind(this)}>
+                <Form onSubmit={(e) => { this.handleSubmit(e,resetFields)}}>
                     <FormItem
                         {...formItemLayout}
                         label={(
@@ -240,7 +248,6 @@ class MyForm extends Component {
                         label="部门"
                     >
                         {getFieldDecorator('apartment', {
-                            initialValue: ['技术中心', '开发部', '用户组'],
                             rules: [{ type: 'array', required: true, message: 'Please select your apartment!' }],
                         })(
                             <Cascader options={apartment} />
@@ -250,8 +257,8 @@ class MyForm extends Component {
                         {...formItemLayout}
                         label="手机号"
                     >
-                        {getFieldDecorator('phone', {
-                            rules: [{ required: true, message: 'Please input your phone number!' }],
+                        {getFieldDecorator('mobile', {
+                            rules: [{ required: true, message: 'Please input your mobile number!' }],
                         })(
                             <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
                         )}
@@ -261,10 +268,8 @@ class MyForm extends Component {
                     </FormItem>
                     
                 </Form>
-    );
             </div>
         )
     }
 }
-const WrappedRegistrationForm = Form.create()(MyForm);
-export default WrappedRegistrationForm;
+

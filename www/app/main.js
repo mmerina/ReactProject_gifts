@@ -8,6 +8,7 @@ import flowerShowModel from "./models/flowerShowModel.js";
 import flowerListModel from "./models/flowerListModel.js";
 import userListModel from "./models/userListModel.js";
 import adminListModel from "./models/adminListModel.js";
+import addFlowerModel from "./models/addFlowerModel.js";
 
 const app = dva({
     onAction: logger
@@ -20,5 +21,6 @@ app.model(flowerShowModel);
 app.model(flowerListModel);
 app.model(userListModel);
 app.model(adminListModel);
+app.model(addFlowerModel);
 
 app.start("#app");

@@ -63,8 +63,7 @@ const apartment = [{
 }];
 var idArr = [];
 for (var i = 0; i < 200; i++) {
-    var theCenter = apartment[0];
-    
+    var theCenter = apartment[0];    
     var theApartment = theCenter.children[parseInt(Math.random()*2)];
     var theGroup = theApartment.children[parseInt(Math.random() * 3)];
     var id = theCenter.idx + theApartment.idx + theGroup.idx + (100 + parseInt(Math.random() * 50)).toString();
@@ -80,7 +79,7 @@ for (var i = 0; i < 200; i++) {
         "mobile": Mock.mock(/^((13[0-9])|(14[57])|(15([5-9]))|(18[5-9]))\d{8}$/),			//手机号
         "sex": Random.pick(["男", "女"]),
         "email": Random.email(),
-        "apartment": theCenter.value + theApartment.value + theGroup.value,
+        "apartment": [theCenter.value , theApartment.value , theGroup.value],
         "icon":""
     }
    

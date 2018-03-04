@@ -4,6 +4,7 @@ import {connect} from "dva";
 
 import FlowerShow from "./flowerShow/FlowerShow";
 import FlowerList from "./flowerList/FlowerList";
+import AddFlower from "./saleFlower/AddFlower";
 
 class FlowerModules extends Component {
     constructor(props) {
@@ -15,8 +16,9 @@ class FlowerModules extends Component {
             {/*
             
             <FlowerList></FlowerList>
+            <FlowerShow></FlowerShow>
         */}
-        <FlowerShow></FlowerShow>
+        <AddFlower></AddFlower>
         </div>
          )
     }

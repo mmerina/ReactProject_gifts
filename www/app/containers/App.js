@@ -69,10 +69,10 @@ class App extends React.Component {
                             </Breadcrumb>
                             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 ,width:1100}}>
                                 {/*
-                                <FlowerModules></FlowerModules>
                                 <UserModules></UserModules>
-                                */}
                                 <AdminModules></AdminModules>
+                            */}
+                            <FlowerModules></FlowerModules>
                                 
                             </Content>
                         </Layout>
