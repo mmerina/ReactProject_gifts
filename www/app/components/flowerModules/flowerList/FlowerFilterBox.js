@@ -48,7 +48,7 @@ class FlowerFilterBox extends Component {
                     <Col span={22}>
                         <MyCheckbox
                             v={data.mainflower}
-                            options={["白玫瑰", "红玫瑰", "蓝玫瑰","粉玫瑰","紫玫瑰","香槟玫瑰","向日葵","香水百合","混搭"]}
+                            options={["白玫瑰", "红玫瑰", "蓝玫瑰","粉玫瑰","紫玫瑰","香槟玫瑰","向日葵","香水百合","康乃馨","混搭"]}
                             onChoose={(v, char) => {
                                 this.props.dispatch({ "type": "flowerlist/addOrChangeFilter", "k": "mainflower", v });
                                 if (v.length == 0) {

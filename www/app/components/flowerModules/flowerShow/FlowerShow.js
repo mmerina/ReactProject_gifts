@@ -10,7 +10,7 @@ import PreviewInfo from "./PreviewInfo.js";
 class FlowerShow extends Component {
     constructor(props) {
         super(props);
-        props.dispatch({ "type": "flowershow/init", "nowid": 10000001});
+        props.dispatch({ "type": "flowershow/init", "nowid": 10000027});
     }
 
     render() {

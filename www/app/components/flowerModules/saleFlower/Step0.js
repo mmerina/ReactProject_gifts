@@ -11,6 +11,7 @@ class Step0 extends Component {
                 name: {},
                 type: {},
                 price: {},
+                amount: {},
                 mainflower: {},
                 color: {},
                 others: {},

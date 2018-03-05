@@ -22,5 +22,6 @@ module.exports = mongoose.model("Flower", {
     "friendship": Boolean,
     "apologize": Boolean,
     "kinship": Boolean,
-    "avatar": String
+    "avatar": String,
+    "collect": Number
 });

@@ -20,6 +20,10 @@ export default Form.create({
                 ...props.price,
                 value: props.price.value
             }),
+            amount: Form.createFormField({
+                ...props.amount,
+                value: props.amount.value
+            }),
             mainflower: Form.createFormField({
                 ...props.mainflower,
                 value: props.mainflower.value

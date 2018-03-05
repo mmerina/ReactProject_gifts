@@ -1,18 +1,11 @@
 var fs = require("fs");
 var path = require("path");
-//引入一个产生随机数据非常方便的包：
 var Mock = require("mockjs");
 var Random = Mock.Random;
 
-//准备写入的文件的地址
 var xieruwenjianURL = path.resolve(__dirname, "./mockAdminData.txt");
-//准备写入的文件的地址
 var userImgURL = path.resolve(__dirname, "../www/admins/icons");
 
-
-//如果已经要写入的文件存在，就删除准备写入的文件
-//fs.existsSync()表示判断文件是否存在
-//fs.unlinkSync()表示删除文件
 if (fs.existsSync(xieruwenjianURL)) {
     fs.unlinkSync(xieruwenjianURL);
 }

@@ -12,6 +12,8 @@ app.get("/flowerimages/:orderID", flowerCtrl.showFlowerImages);
 app.get("/flowerinfo/:orderID", flowerCtrl.showFlowerInfo);
 app.get("/flowerlikes/:orderID", flowerCtrl.showFlowerLikes);
 app.post("/flowersearch", flowerCtrl.showFlowerSearch);
+app.post("/uploadflowerimages", flowerCtrl.uploadflowerimages);
+app.post("/registerflower", flowerCtrl.registerFlower);
 
 //用户接口
 app.get("/userinfo/:orderID", userCtrl.showUserInfo);

@@ -7,50 +7,6 @@ const Option = Select.Option;
 const { TextArea } = Input;
 const AutoCompleteOption = AutoComplete.Option;
 
-const apartment = [{
-    value: '技术中心',
-    label: '技术中心',
-    children: [
-        {
-            value: '质量控制部',
-            label: '质量控制部',
-            children: [
-                {
-                    value: '测试A组',
-                    label: '测试A组',
-                },
-                {
-                    value: '测试B组',
-                    label: '测试B组',
-                },
-                {
-                    value: '信息技术组',
-                    label: '信息技术组',
-                }
-            ]
-        },
-        {
-            value: '开发部',
-            label: '开发部',
-            children: [
-                {
-                    value: '产品组',
-                    label: '产品组',
-                },
-                {
-                    value: '用户组',
-                    label: '用户组',
-                },
-                {
-                    value: '售后组',
-                    label: '售后组',
-                }
-            ]
-        }
-    ]
-}];
-
-
 export default class FlowerForm extends Component {
     constructor(props) {
         super(props);
@@ -65,27 +21,6 @@ export default class FlowerForm extends Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
-                // $.post("/registeradmin", {
-                //     "values": JSON.stringify({
-                //         "id": values.id,
-                //         "name": values.name,
-                //         "apartment": values.apartment,
-                //         "mobile": values.mobile,
-                //         "email": values.email,
-                //         "password": values.password,
-                //         "sex": values.sex,
-                //         "icon": ""
-                //     })
-                // }, function (data) {
-                //     if (data.result == 1) {
-                //         message.success('注册成功！');
-                //         resetFields();
-                        
-                //     }else{
-                //         message.error('id已存在！');
-                //     }
-                // }); 
-                console.log(values);
                 this.setState({ "isDisabaled": false});
             } else {
                 this.setState({ "isDisabaled": true});
@@ -153,7 +88,25 @@ export default class FlowerForm extends Component {
                                         pattern: /^\d+$/, message: '请输入数字！',
                                     },
                                     {
-                                        required: true, message: 'Please select flower price!',
+                                        required: true, message: 'Please input flower price!',
+                                    }
+                                ],
+                            }
+                            )(<Input />)
+                        }
+                    </FormItem>
+                    <FormItem
+                        {...formItemLayout}
+                        label="花枝数量"
+                    >
+                        {
+                            getFieldDecorator('amount', {
+                                rules: [
+                                    {
+                                        pattern: /^\d+$/, message: '请输入数字！',
+                                    },
+                                    {
+                                        required: true, message: 'Please input flower amount!',
                                     }
                                 ],
                             }
@@ -179,6 +132,7 @@ export default class FlowerForm extends Component {
                                 <Radio value="香槟玫瑰">香槟玫瑰</Radio>
                                 <Radio value="向日葵">向日葵</Radio>
                                 <Radio value="香水百合">香水百合</Radio>
+                            <Radio value="康乃馨">康乃馨</Radio>
                                 <Radio value="混搭">混搭</Radio>
                             </RadioGroup>
                         )}

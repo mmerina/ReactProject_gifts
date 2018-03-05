@@ -15,29 +15,24 @@ class SmallPic extends Component {
         const pageAmount = $(this.refs.ul).find("ul").length;
         var self = this;
         $(self.refs.ul).stop(true).animate({ "left": -486 * page }, 300);
-        //事件委托，让每一个span被触碰都有事情发生
         var i = page;
         $(this.refs.btn).delegate(".rightbtn", "mouseenter", function () {
             if (i < pageAmount-1){
                 i++;
             }
-            //拉动
             $(self.refs.ul).stop(true).animate({ "left": -486 * i}, 300);
         });
         $(this.refs.btn).delegate(".leftbtn", "mouseenter", function () {
             if (i > 0) {
                 i--;
             }
-            //拉动
             $(self.refs.ul).stop(true).animate({ "left": -486 * i }, 300);
         });
 
-        //当鼠标离开大盒子的时候，拉动回当前的位置，cur复位
         $(this.refs.small_img).mouseleave(function () {
             $(self.refs.ul).stop(true).animate({ "left": -486 * page }, 300);
         });
 
-        //鼠标移上小图
         $(this.refs.ul).delegate("li", "mouseenter", function () {
             self.props.dispatch({ "type": "flowershow/changeNowIdx", "nowidx": $(this).data("i")});
             $(this).addClass("cur").siblings().removeClass("cur");
@@ -46,12 +41,9 @@ class SmallPic extends Component {
     render() {
         const { nowid,nowidx,flowerimages} = this.props;
         if (!flowerimages["views"]) flowerimages["views"] = [];
-        //显示ul和li.
         const arr = flowerimages["views"];
-        //总页数
         const pageAmount = Math.ceil(arr.length / 5);
         const page = Math.floor(nowidx/5);
-        //显示小图列表
         const showUlLis = () => {
             var DOMARR = [];
             for (let i = 0; i < pageAmount; i++) {

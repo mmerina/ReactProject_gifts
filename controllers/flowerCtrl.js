@@ -85,3 +85,75 @@ exports.showFlowerSearch = function (req, res) {
         });
     });
 }
+
+//上传鲜花图片
+exports.uploadflowerimages = function (req, res) {
+    var form = new formidable.IncomingForm();
+    form.uploadDir = path.resolve(__dirname, "../www/uploads/flowerimages/");
+    form.keepExtensions = true;
+    form.parse(req, function (err, fields, files) {
+        res.json({ "result": 1, "base": path.parse(files.viewpics.path).base })
+    });
+}
+
+//鲜花录入
+exports.registerFlower = function (req, res) {
+    var uploadsbase = path.resolve(__dirname, "../www/uploads/flowerimages");
+    var flowerimagesbase = path.resolve(__dirname, "../www/flowers/big_pic");
+    var flowerimagessmallbase = path.resolve(__dirname, "../www/flowers/small_pic");
+
+    Flower.count({}, function (err, count) {
+        //有一个id了
+        var id = count + 10000000 + 1;
+
+        var form = new formidable.IncomingForm();
+        form.parse(req, function (err, fields) {
+            var values = JSON.parse(fields.values);
+            var form0 = values.form0;
+            var form1 = values.form1;
+
+            //创建文件夹
+            fs.mkdirSync(flowerimagesbase + "/" + id);
+            fs.mkdirSync(flowerimagesbase + "/" + id + "/views");
+            fs.mkdirSync(flowerimagesbase + "/" + id + "/introductions");
+            fs.mkdirSync(flowerimagessmallbase + "/" + id);
+
+            //移动文件，复制两份
+            for (var i = 0; i < form1.views.length; i++) {
+                fs.copyFileSync(uploadsbase + "/" + form1.views[i], flowerimagesbase + "/" + id + "/views/" + form1.views[i])
+                fs.copyFileSync(uploadsbase + "/" + form1.views[i], flowerimagessmallbase + "/" + id + "/" + form1.views[i])
+            }
+            for (var i = 0; i < form1.introductions.length; i++) {
+                fs.copyFileSync(uploadsbase + "/" + form1.introductions[i], flowerimagesbase + "/" + id + "/introductions/" + form1.introductions[i])
+            }
+            //写入数据库
+            Flower.create({
+                id,
+                "name": form0.name.value,
+                "type": form0.type.value,
+                "price": Number(form0.price.value),
+                "amount": Number(form0.amount.value),
+                "mainflower": form0.mainflower.value,
+                "others": form0.others.value,
+                "package": form0.package.value,
+                "color": form0.color.value,
+                "words": form0.words.value,
+                "volume": 0,
+                "friend": form0.sendObject.value.includes("朋友"),
+                "family": form0.sendObject.value.includes("家人"),
+                "lover": form0.sendObject.value.includes("爱人"),
+                "leader": form0.sendObject.value.includes("领导"),
+                "patient": form0.sendObject.value.includes("病人"),
+                "romantic": form0.purpose.value.includes("浪漫爱情"),
+                "birthday": form0.purpose.value.includes("生日祝福"),
+                "friendship": form0.purpose.value.includes("友谊万岁"),
+                "apologize": form0.purpose.value.includes("诚意致歉"),
+                "kinship": form0.purpose.value.includes("温暖亲情"),
+                "avatar": form1.views[0],
+                "collect":0
+            }, function () {
+                res.json({ "result": 1 })
+            })
+        });
+    });
+}
