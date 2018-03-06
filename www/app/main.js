@@ -9,12 +9,14 @@ import flowerListModel from "./models/flowerListModel.js";
 import userListModel from "./models/userListModel.js";
 import adminListModel from "./models/adminListModel.js";
 import addFlowerModel from "./models/addFlowerModel.js";
+import addFileModel from "./models/addFileModel.js";
+
+import router from "./router.js";
 
 const app = dva({
     onAction: logger
 });
 
-const router = () => <App></App>;
 app.router(router);
 
 app.model(flowerShowModel);
@@ -22,5 +24,6 @@ app.model(flowerListModel);
 app.model(userListModel);
 app.model(adminListModel);
 app.model(addFlowerModel);
+app.model(addFileModel);
 
 app.start("#app");

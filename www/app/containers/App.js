@@ -7,6 +7,7 @@ const { Header, Content, Sider } = Layout;
 import FlowerModules from "../components/flowerModules/FlowerModules";
 import UserModules from "../components/userModules/UserModules";
 import AdminModules from "../components/adminModules/AdminModules";
+import FileManagerModules from "../components/fileManagerModules/FileManagerModules";
 
 import "./App.less";
 
@@ -71,9 +72,11 @@ class App extends React.Component {
                                 {/*
                                 <UserModules></UserModules>
                                 <AdminModules></AdminModules>
-                            */}
+                                <FileManagerModules></FileManagerModules>
                             <FlowerModules></FlowerModules>
-                                
+                            */}
+
+                            {this.props.children} 
                             </Content>
                         </Layout>
                     </Layout>

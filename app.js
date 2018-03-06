@@ -6,6 +6,7 @@ mongoose.connect("localhost/gifts");
 var flowerCtrl = require("./controllers/flowerCtrl");
 var userCtrl = require("./controllers/userCtrl");
 var adminCtrl = require("./controllers/adminCtrl");
+var fileCtrl = require("./controllers/fileCtrl");
 
 //鲜花接口
 app.get("/flowerimages/:orderID", flowerCtrl.showFlowerImages);
@@ -26,6 +27,12 @@ app.post("/upload", adminCtrl.uploadIcon);
 app.get("/adminicon", adminCtrl.showAdminIcon);
 app.post("/docut", adminCtrl.docut);
 app.post("/registeradmin", adminCtrl.registerAdmin);
+
+//文件接口
+app.post("/uploadfiles", fileCtrl.uploadfiles);
+app.post("/filesearch", fileCtrl.showFileSearch);
+app.post("/uploadfiletodatabase", fileCtrl.uploadfileToDatabase);
+app.post("/deletefile", fileCtrl.deleteFile);
 
 app.use(express.static("www"));
 

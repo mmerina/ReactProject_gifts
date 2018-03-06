@@ -1,0 +1,6 @@
+﻿
+{filename: "文档一.txt", real: "upload_7f3cc8d31925c7666b679d5a2a2f8189.txt", ext: ".txt"}
+{filename: "文档二.ppt", real: "upload_f738c820969ea6b0b603e42a12d2975d.ppt", ext: ".ppt"}
+{filename: "文档三.zip", real: "upload_19d07e1ff61b0a0fe22ca743969387a0.zip", ext: ".zip"}
+{filename: "文档四.doc", real: "upload_e0ee61d83f1bb3c97bb8b73bfa75dcee.doc", ext: ".doc"}
+{filename: "文档五.xls", real: "upload_2856814225c302f7688c7dc905e5bb3f.xls", ext: ".xls"}

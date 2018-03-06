@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from "dva";
 import FlowerFilterBox from "./FlowerFilterBox";
 import FlowerTableBox from "./FlowerTableBox";
+import App from "../../../containers/App.js";
 
 import "./FlowerList.less";
 
@@ -12,10 +13,13 @@ class FlowerList extends Component {
     }
     render() { 
         return ( 
-        <div>
-            <FlowerFilterBox></FlowerFilterBox> 
-            <FlowerTableBox></FlowerTableBox> 
-        </div>
+        <App>
+            <div>
+                <FlowerFilterBox></FlowerFilterBox> 
+                <FlowerTableBox></FlowerTableBox> 
+            </div>
+        </App>
+
          )
     }
 }
