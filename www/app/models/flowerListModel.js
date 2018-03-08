@@ -56,12 +56,15 @@ export default {
             } else {
                 yield put({ "type": "addFilter", k, v })
             }
-
+            
+            yield put({ "type": "changePagination", "page": 1 });
             yield call(fetchFlowerServer, select, put);
         },
         *removeFilter({ k }, { put, select, call }) {
-
+            
             yield put({ "type": "removeFilterSync", k });
+            
+            yield put({ "type": "changePagination", "page": 1 });
             yield call(fetchFlowerServer, select, put);
         },
         *changePage({ page, pagesize }, { put, select, call }) {
