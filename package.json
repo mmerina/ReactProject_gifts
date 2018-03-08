@@ -1,7 +1,7 @@
 {
-    "name": "minsu",
+    "name": "gifts",
     "version": "1.0.0",
-    "description": "project_usedcars",
+    "description": "react_project",
     "main": "app.js",
     "scripts": {
         "mock": "node ./init/createMockFlowers.js && node ./init/createMockUsers.js",
