@@ -9,8 +9,8 @@ dva 实现上尽量不创建新语法，而是用依赖库本身的语法，比�
 
 路由采用官方路由React-router。由于webpack配合Babel优秀的编译能力，因此本项目采用webpack +babel + ES2016作为编译工具。后台接口用node.js，数据库采用非关系型数据库mongodb。	
 # 项目功能
-* 管理员添加和管理
-*用户数据管理
+* 管理员注册和管理
+* 用户数据管理
 * 发布信息（包括文件的上传、图片的上传和裁切等）
 * 查看信息
 * 筛选信息
@@ -20,23 +20,23 @@ dva 实现上尽量不创建新语法，而是用依赖库本身的语法，比�
 ```javascript
     ┠ controllers 接口控制器 
     ┠ models mongodb的Schema文件
-		┠ www 	开发文件
-        ┠ app 	 	开发文件件
-			      ┃ ┠	culumns 根据栏目而分的组件
-			      ┃ ┠	container react中充当容器的组件	
-			      ┃ ┠	models   action、store和saga等整合在一起后
-			      ┃ ┠	main.js		入口文件
-            ┃ ┠	router.js		路由文件
-        ┠ dist		存放编译后的文件
-			      ┃ ┠ bundle.js 编译后的文件
+	┠ www 	开发文件
+       		┠ app 	开发文件件
+			┃ ┠	culumns 根据栏目而分的组件
+			┃ ┠	container react中充当容器的组件	
+			┃ ┠	models   action、store和saga等整合在一起后
+			┃ ┠	main.js		入口文件
+		┠ router.js	路由文件
+        ┠ dist	存放编译后的文件
+		┃ ┠ bundle.js 编译后的文件
         ┠ admins 管理员资源文件夹
         ┠ users 用户资源文件夹
         ┠ pages iframe页面文件夹
         ┠ index 主页
-		    ┠	uploads  项目功能文件，存在发布资源
-		┠	app.js 项目启动
-		┠	package.json 依赖文件
-		┠	webpack.config.js  webpack配置文件
+	┠	uploads  项目功能文件，存在发布资源
+    ┠	app.js 项目启动
+    ┠	package.json 依赖文件
+    ┠	webpack.config.js  webpack配置文件
 		
 ```
 # 项目启动
@@ -48,7 +48,7 @@ dva 实现上尽量不创建新语法，而是用依赖库本身的语法，比�
 ### 安装依赖
 
 ```shell
-cnpm install
+npm install
 ```
 
 ### 开启数据库
