@@ -138,7 +138,7 @@ exports.registerFlower = function (req, res) {
                 "package": form0.package.value,
                 "color": form0.color.value,
                 "words": form0.words.value,
-                "volume": 0,
+                "volume": parseInt(Math.random() * 50000),
                 "friend": form0.sendObject.value.includes("朋友"),
                 "family": form0.sendObject.value.includes("家人"),
                 "lover": form0.sendObject.value.includes("爱人"),
@@ -150,7 +150,7 @@ exports.registerFlower = function (req, res) {
                 "apologize": form0.purpose.value.includes("诚意致歉"),
                 "kinship": form0.purpose.value.includes("温暖亲情"),
                 "avatar": form1.views[0],
-                "collect":0
+                "collect": parseInt(Math.random() * 50000)
             }, function () {
                 res.json({ "result": 1 })
             })

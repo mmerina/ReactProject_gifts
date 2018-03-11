@@ -135,13 +135,13 @@ class FileList extends Component {
             <div className="filelist">
                 <Row>
                     <Col span={4}></Col>
-                    <Col span={2}><h4>文件搜索：</h4></Col>
+                    <Col span={3}><h4>文件搜索：</h4></Col>
                     <Col span={8}>
                         <Input onChange={(e) => {
                             this.props.dispatch({ "type": "addFile/changeKeyword", "keyword": e.target.value })
                         }}></Input>
                     </Col>
-                    <Col span={6}></Col>
+                    <Col span={5}></Col>
                     <Col span={4}>
                         <Button onClick={()=>{
                             $(this.refs.filebtn).trigger("click");

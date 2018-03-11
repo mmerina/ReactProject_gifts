@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from "dva";
 import { Modal, Button, Alert, Row, Col, Divider } from 'antd';
+import { push } from "react-router-redux";
 
 class MyModal extends Component {
     constructor(props) {
@@ -19,6 +20,11 @@ class MyModal extends Component {
                     cancelText="录入新商品"
                     onOk={()=>{
                         this.props.dispatch({ "type": "addFlower/changeIsModal","isModal":false})
+                        this.props.dispatch({ "type": "addFlower/changeStep", "step": 0 })
+                        this.props.dispatch({ "type": "addFlower/changeForm0", "form0": {} })
+                        this.props.dispatch({ "type": "addFlower/changeForm1", "form1": {} })
+                        this.props.dispatch(push("/buy/flowerlist"));
+
                     }}
                     onCancel={()=>{
                         this.props.dispatch({ "type": "addFlower/changeIsModal","isModal":false})
